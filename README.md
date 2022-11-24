@@ -4,6 +4,8 @@
 + Jose Fernando Murcia Rincón
 + Andres David Rodriguez Soler
 
+#### Proyecto 🦾
+
 En este repositorio se presenta el proyecto correspp¡ondiente a Electrónica Digital II 2022-2. El proyecto consiste en un dispensador de medicamentos basados en la FPGA Zybo 7. Con esta tarjeta de desarrollo se busca configurar el procesador y crear los periféricos necesarios para el funcionamiento del dispositivo. 
 
 El carrito dispensador cuenta con un sensor RGB (TCS3200) para encontrar la estación o lugar donde debe parar y dispensar; con un sensor infrarojo (HW511) para poder seguir una linea, la cual será el camino necesario para moverse y por ultimo cuenta con motores DC de 5V, tanto para dispensar como para hacer posible el movimiento del carrito.
