@@ -1,5 +1,5 @@
-# ProyectoGrupo4 - Vehículo Dispensador de Medicamentos Hospitalarios
-#### Integrantes
+# ProyectoGrupo4 - Vehículo Dispensador de Medicamentos Hospitalarios 💊
+#### Integrantes 👤
 + Federik Leonardo Fajardo Useche
 + Jose Fernando Murcia Rincón
 + Andres David Rodriguez Soler
@@ -10,12 +10,12 @@ El carrito dispensador cuenta con un sensor RGB (TCS3200) para encontrar la esta
 
 La configuración del SoC y los perifericos del dispositivo son mostrados a continuación.
 
-## SOC Procesador - Perifericos
+## SOC Procesador - Perifericos ⚙️
 ![DigiMapa](https://user-images.githubusercontent.com/80412854/203686772-221cc740-57fd-4b64-ab0e-1aa64c5b5457.png)
 
 ## Periféricos
-### Sensor RGB
+### Sensor RGB 🌈
 
-### Motor Paso a Paso
+### Motor Paso a Paso 🔩
 
-### Infrarojo
+### Infrarrojo ⭕️
