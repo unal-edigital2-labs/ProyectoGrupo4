@@ -1,4 +1,4 @@
-# ProyectoGrupo4 - Dispensador de Medicamentos
+# ProyectoGrupo4 - Carro de Medicación Hospitalaria
 ##Integrantes
 + Federik Leonardo Fajardo Useche
 + Jose Fernando Murcia Rincón
