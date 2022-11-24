@@ -1,5 +1,5 @@
 # ProyectoGrupo4 - Dispensador de Medicamentos
-###Integrantes
+##Integrantes
 + Federik Leonardo Fajardo Useche
 + Jose Fernando Murcia Rincón
 + Andres David Rodriguez Soler
