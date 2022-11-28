@@ -16,7 +16,7 @@ La configuración del SoC y los perifericos del dispositivo son mostrados a cont
 ![DigiMapa](https://user-images.githubusercontent.com/80412854/203686772-221cc740-57fd-4b64-ab0e-1aa64c5b5457.png)
 
 hola
-
+hola 2
 
 ## Periféricos
 ### Sensor RGB 🌈
