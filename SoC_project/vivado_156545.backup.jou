@@ -1,0 +1,21 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Thu Nov 24 15:50:13 2022
+# Process ID: 156545
+# Current directory: /home/felefaus/Desktop/practicas_digital/lab03-2022-2-grupo04-22-2/SoC_project
+# Command line: vivado -mode tcl
+# Log file: /home/felefaus/Desktop/practicas_digital/lab03-2022-2-grupo04-22-2/SoC_project/vivado.log
+# Journal file: /home/felefaus/Desktop/practicas_digital/lab03-2022-2-grupo04-22-2/SoC_project/vivado.jou
+# Running On: felefaus-93, OS: Linux, CPU Frequency: 1800.000 MHz, CPU Physical cores: 4, Host memory: 8208 MB
+#-----------------------------------------------------------
+open_hw
+open_hw_manager
+connect_hw_server
+open_hw_target 
+set_property PROBES.FILE {} [lindex [get_hw_devices] {1}]
+set_property PROGRAM.FILE {./build/gateware/top.bit} [lindex [get_hw_devices] {1}]
+program_hw_devices [lindex [get_hw_devices] {1}]
+refresh_hw_device [lindex [get_hw_devices] {1}]
+quit

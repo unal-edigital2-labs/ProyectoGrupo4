@@ -1,0 +1,17 @@
+pyserial
+selenium
+pysnmp
+ipaddress
+pexpect
+pycryptodome
+pyshark==0.4.6
+grpcio==1.20.1
+grpcio-tools==1.20.1
+PyYAML==5.4.1
+grpcio
+grpcio-tools
+PyYAML
+pexpect==4.7.0
+ptyprocess==0.6.0
+pyserial==3.4
+

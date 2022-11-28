@@ -1,0 +1,52 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Thu Nov 24 15:50:13 2022
+# Process ID: 156545
+# Current directory: /home/felefaus/Desktop/practicas_digital/lab03-2022-2-grupo04-22-2/SoC_project
+# Command line: vivado -mode tcl
+# Log file: /home/felefaus/Desktop/practicas_digital/lab03-2022-2-grupo04-22-2/SoC_project/vivado.log
+# Journal file: /home/felefaus/Desktop/practicas_digital/lab03-2022-2-grupo04-22-2/SoC_project/vivado.jou
+# Running On: felefaus-93, OS: Linux, CPU Frequency: 1800.000 MHz, CPU Physical cores: 4, Host memory: 8208 MB
+#-----------------------------------------------------------
+open_hw
+WARNING: 'open_hw' is deprecated, please use 'open_hw_manager' instead.
+open_hw_manager
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2022.1
+  **** Build date : Apr 18 2022 at 16:10:30
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:3042
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+
+******** Xilinx cs_server v2022.1.0
+  ****** Build date   : Apr 12 2022-14:12:08
+    **** Build number : 2022.1.1649790728
+      ** Copyright 2017-2022 Xilinx, Inc. All Rights Reserved.
+
+
+
+open_hw_target 
+INFO: [Labtoolstcl 44-466] Opening hw_target localhost:3121/xilinx_tcf/Digilent/210351A77B18A
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+ERROR: [Labtools 27-3244] Could not start or connect to xsdb server.
+open_hw_target: Time (s): cpu = 00:00:00.07 ; elapsed = 00:01:00 . Memory (MB): peak = 2637.707 ; gain = 8.004 ; free physical = 1994 ; free virtual = 4762
+INFO: [Common 17-344] 'open_hw_target' was cancelled
+set_property PROBES.FILE {} [lindex [get_hw_devices] {1}]
+set_property PROGRAM.FILE {./build/gateware/top.bit} [lindex [get_hw_devices] {1}]
+program_hw_devices [lindex [get_hw_devices] {1}]
+INFO: [Labtools 27-3164] End of startup status: HIGH
+refresh_hw_device [lindex [get_hw_devices] {1}]
+INFO: [Labtools 27-1434] Device xc7z010 (JTAG device index = 1) is programmed with a design that has no supported debug core(s) in it.
+quit
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 24 15:51:32 2022...

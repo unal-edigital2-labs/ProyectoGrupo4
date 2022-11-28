@@ -1,0 +1,54 @@
+#-----------------------------------------------------------
+# Vivado v2022.1 (64-bit)
+# SW Build 3526262 on Mon Apr 18 15:47:01 MDT 2022
+# IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
+# Start of session at: Thu Nov 24 15:34:31 2022
+# Process ID: 153558
+# Current directory: /home/felefaus/Desktop/practicas_digital/lab03-2022-2-grupo04-22-2/SoC_project
+# Command line: vivado -mode tcl
+# Log file: /home/felefaus/Desktop/practicas_digital/lab03-2022-2-grupo04-22-2/SoC_project/vivado.log
+# Journal file: /home/felefaus/Desktop/practicas_digital/lab03-2022-2-grupo04-22-2/SoC_project/vivado.jou
+# Running On: felefaus-93, OS: Linux, CPU Frequency: 1800.000 MHz, CPU Physical cores: 4, Host memory: 8208 MB
+#-----------------------------------------------------------
+open_hw
+WARNING: 'open_hw' is deprecated, please use 'open_hw_manager' instead.
+open_hw_manager
+connect_hw_server
+INFO: [Labtools 27-2285] Connecting to hw_server url TCP:localhost:3121
+INFO: [Labtools 27-2222] Launching hw_server...
+INFO: [Labtools 27-2221] Launch Output:
+
+****** Xilinx hw_server v2022.1
+  **** Build date : Apr 18 2022 at 16:10:30
+    ** Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
+
+
+INFO: [Labtools 27-3415] Connecting to cs_server url TCP:localhost:3042
+INFO: [Labtools 27-3417] Launching cs_server...
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+INFO: [Labtools 27-2221] Launch Output:
+
+ERROR: [Labtools 27-2220] Launch Error:
+Unable to launch local cs_server executable.
+
+Aborted!
+child exit status 256
+
+INFO: [Common 17-344] 'connect_hw_server' was cancelled
+open_hw_target 
+INFO: [Common 17-41] Interrupt caught. Command should exit soon.
+INFO: [Common 17-344] 'open_hw_target' was cancelled
+set_property PROBES.FILE {} [lindex [get_hw_devices] {1}]
+WARNING: [Labtoolstcl 44-128] No matching hw_devices were found.
+ERROR: [Common 17-161] Invalid option value '' specified for 'objects'.
+set_property PROGRAM.FILE {./build/gateware/top.bit} [lindex [get_hw_devices] {1}]
+WARNING: [Labtoolstcl 44-128] No matching hw_devices were found.
+ERROR: [Common 17-161] Invalid option value '' specified for 'objects'.
+program_hw_devices [lindex [get_hw_devices] {1}]
+WARNING: [Labtoolstcl 44-128] No matching hw_devices were found.
+ERROR: [Common 17-161] Invalid option value '' specified for 'hw_device'.
+refresh_hw_device [lindex [get_hw_devices] {1}]
+WARNING: [Labtoolstcl 44-128] No matching hw_devices were found.
+ERROR: [Labtoolstcl 44-5] Could not find current or explicit device for command
+quit
+INFO: [Common 17-206] Exiting Vivado at Thu Nov 24 15:34:42 2022...
