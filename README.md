@@ -18,8 +18,44 @@ La configuración del SoC y los perifericos del dispositivo son mostrados a cont
 ## Periféricos
 ### Sensor RGB 🌈
 
-### Motor Paso a Paso 🔩
+```
+static void RGB_sensor_test(void){
+	 
+	RGB_sensor_S_out_write(0b1101);
 
+	//delay_us(100);
+
+	unsigned int datos[500];
+
+
+	int j=0;
+
+	for(int i =0;i<500;i++){
+
+		datos[i]=-1;
+	}
+
+	while(j<2000){
+		datos[j]=freq_count();
+		j=j+1;
+	}
+
+	for(int i=0; i<500; i++){
+		printf("out: %i\n",datos[i]);
+	}
+	//unsigned int time=0;
+
+	//RGB_sensor_S_out_write();
+
+	//RGB
+
+	//printf("tiempo = %u", time);
+}
+
+```
+
+### Motores 🔩
+## Ruedas Carrito
 ```
 static void motor_test(bool EN1,bool EN2,bool EN3 ,bool EN4){
 	
@@ -35,7 +71,64 @@ static void motor_test(bool EN1,bool EN2,bool EN3 ,bool EN4){
 }
 
 ```
+## Dispensador
+```
+void motor_disp(int degrees){
+
+	int paso1=0b1100;
+	int paso2=0b0110;
+	int paso3=0b0011;
+	int paso4=0b1001;
+
+	if (degrees>0){
+		for(int i=0; i< degrees*512/360;i++){
+			stepper_out_write(paso1);
+			delay_ms(2);
+			stepper_out_write(paso2);
+			delay_ms(2);
+			stepper_out_write(paso3);
+			delay_ms(2);
+			stepper_out_write(paso4);
+			delay_ms(2);
+		}
+	}else if (degrees<0){
+
+		for (int i=0; i>degrees*512/360;i--){
+			stepper_out_write(paso4);
+			delay_ms(2);
+			stepper_out_write(paso3);
+			delay_ms(2);
+			stepper_out_write(paso2);
+			delay_ms(2);
+			stepper_out_write(paso1);
+			delay_ms(2);
+		}
+	}
+```
 
 ### Infrarrojo ⭕️
+
+```
+static void infrarrojo_test(void){
+	unsigned int LIR;
+	unsigned int RIR;
+
+
+	if (LIR_in_read() ==0 && RIR_in_read() == 0) motor_test(0,1,1,0);	// DETENER MOTORRES
+	if (LIR_in_read() ==1 && RIR_in_read() == 0) motor_test(0,0,1,0);	// MOTORES IZQUIERDA 
+	if (LIR_in_read() ==0 && RIR_in_read() == 1) motor_test(0,1,0,0);	// MOTORES DERECHA	
+	if (LIR_in_read() ==1 && RIR_in_read() == 1) motor_test(0,0,0,0);	// MOTORES ADELANTE 
+	
+	/*while(!(buttons_in_read())&1){
+		LIR = LIR_in_read();
+		RIR = RIR_in_read();
+		printf("LIR = %i\n", LIR);
+		printf("RIR = %i\n", RIR);
+		delay_ms(1000);
+	
+	}
+	*/
+}
+```
 
 ### Tarjeta ESP8266 💻
