@@ -20,6 +20,22 @@ La configuración del SoC y los perifericos del dispositivo son mostrados a cont
 
 ### Motor Paso a Paso 🔩
 
+```
+static void motor_test(bool EN1,bool EN2,bool EN3 ,bool EN4){
+	
+	//while(!(buttons_in_read())&1){
+		motorEN1_out_write(EN1);
+		motorEN2_out_write(EN2);
+		motorEN3_out_write(EN3);
+		motorEN4_out_write(EN4);
+		
+		//printf("hola");
+		//delay_ms(500);
+	//}
+}
+
+```
+
 ### Infrarrojo ⭕️
 
 ### Tarjeta ESP8266 💻
