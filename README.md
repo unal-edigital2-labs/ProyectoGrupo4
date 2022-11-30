@@ -17,7 +17,7 @@ La configuración del SoC y los perifericos del dispositivo son mostrados a cont
 
 ## Periféricos
 ### Sensor RGB 🌈
-
+El sensor RGB
 ```
 static void RGB_sensor_test(void){
 	 
@@ -132,3 +132,5 @@ static void infrarrojo_test(void){
 ```
 
 ### Tarjeta ESP8266 💻
+
+La tarjeta ESP8266 fue utilizada de tal forma que se pudiera mandar la información de las acciones a realizar por el carrito. La tarjeta de desarrollo cuenta con un módulo wifi y la capacidad de acceder y personalizar una pagina web basada en un servidor local. A través de HTML se crean los botones, se decidió que iban a ser 3 estaciones y 3 posibles medicamentos, es decir, se configuraron 6 botones. La comunicación de la ESP con la FPGA se hizo por medio de GPIO, por lo que cada boton envia una señal que puede tener un valor de 0 ó 1 (3.3V). Con las diferentes combinaciones posibles se programa un comportamiento definido para el carrito.
