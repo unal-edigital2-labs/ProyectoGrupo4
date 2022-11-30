@@ -23,7 +23,7 @@ Este sensor es capaz de medir la frecuencia en la que se encuentra cierta onda d
 ![Mdulo-de-reconocimiento-de-Color-para-Arduino-sensor-de-Color-TCS230-TCS3200-digitalshop-sincelejo](https://user-images.githubusercontent.com/80412854/204786905-6db15984-401a-4846-b22b-e476d91968da.jpg)
 
 
-#### Declaración Módulo Periférico
+##### Declaración Módulo Periférico
 Aquí se declaran los pines GPIO S0 S1 S2 y S3 provenientes del sensor.
 ```
 #RGB sensor Color S0 S1 S2 S3 Out RGB_Sensor_EN
@@ -40,7 +40,7 @@ Aquí se declaran los pines GPIO S0 S1 S2 y S3 provenientes del sensor.
 		self.submodules.RGB_sensor_Out = gpio.GPIOIn(pads_RGB_sensor_Out)
 ```
 
-#### Función que usa el periférico.
+##### Función que usa el periférico.
 Esta función imprime el valor en el rango que se esta leyendo mediante el sensor.
 ```
 static void RGB_sensor_test(void){
@@ -106,7 +106,7 @@ Para el movimiento del carrito con los motores se hizo uso de un puente H, con e
 		self.submodules.motorEN4 = gpio.GPIOOut(pads_motorEN4)
 ```
 
-## Ruedas Carrito
+#### Ruedas Carrito
 ```
 static void motor_test(bool EN1,bool EN2,bool EN3 ,bool EN4){
 	
@@ -124,7 +124,7 @@ static void motor_test(bool EN1,bool EN2,bool EN3 ,bool EN4){
 
 Para el dispensador se uso un motor paso a paso, para el cual se le asignaron en un rango de valores los 4 ángulos deseados para el movimiento rotatorio del contenedor de los medicamentos:
 
-## Dispensador
+#### Dispensador
 Se declara el uso del módulo de paso a paso, usando GPIO
 
 ```
@@ -500,8 +500,9 @@ El mapa de memoria que es mostrado en el archivo Soc_MemoryMap es el resultado d
 
 ![MapaMem](https://user-images.githubusercontent.com/80412854/204789938-94075ddd-c6e4-4e15-8a4c-16e77f330fd1.png)
 
+### Alimentación
 
-Como se ha visto en los perifericos del documento, algunos fueron alimentados por medio de la FPGA, sin embargo, se debio usar una powerbank para alimentar tanto la FPGA como los perifericos que no pudieron ser alimentados mediante la tarjeta. LA FPGA debe ser programada con la powerbank en uso, ya que si esta se llega a apagar, la programación del procesador se pierde. Por otro lado, la ESP también debió ser alimentada, pero esta tarjeta queda programada y no tiene inconveniente al apagarse. 
+Como se ha visto en los perifericos del documento, algunos fueron alimentados por medio de la FPGA, sin embargo, se debio usar una powerbank para alimentar tanto la FPGA como los perifericos que no pudieron ser alimentados mediante la tarjeta. LA FPGA debe ser programada con la powerbank en uso, ya que si esta se llega a apagar, la programación del procesador se pierde. Por otro lado, la ESP también debió ser alimentada, pero esta tarjeta queda programada y no tiene inconveniente al apagarse.
 
 
 
