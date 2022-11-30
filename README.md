@@ -18,6 +18,27 @@ La configuración del SoC y los perifericos del dispositivo son mostrados a cont
 ## Periféricos
 ### Sensor RGB 🌈
 El sensor RGB
+Este sensor es capaz de medir la frecuencia en la que se encuentra cierta onda de luz, por esto, se debieron ajustar manualmente los rangos de frecuencias en donde se iban a encontrar los colores rojo, verde y azul. Para este periferico se uso un módulo GPIO que iba a recoger la información de 4 pines provenientes del sensor, a su vez, el sensor es alimentado.
+
+#### Declaración Módulo Periférico
+Aquí se declaran los pines GPIO S0 S1 S2 y S3 provenientes del sensor.
+```
+#RGB sensor Color S0 S1 S2 S3 Out RGB_Sensor_EN
+		SoCCore.add_csr(self,"RGB_sensor_S")
+		pads_RGB_sensor_S = Cat(*[platform.request("RGB_sensor_S", i) for i in range(4)])
+		self.submodules.RGB_sensor_S = gpio.GPIOOut(pads_RGB_sensor_S)
+		#RGB_Sensor_EN
+		SoCCore.add_csr(self,"RGB_sensor_EN")
+		pads_RGB_sensor_EN = Cat(*[platform.request("RGB_sensor_EN", i) for i in range(1)])
+		self.submodules.RGB_sensor_EN = gpio.GPIOOut(pads_RGB_sensor_EN)
+		#RGB_Sensor_Out
+		SoCCore.add_csr(self,"RGB_sensor_Out")
+		pads_RGB_sensor_Out = Cat(*[platform.request("RGB_sensor_Out", i) for i in range(1)])
+		self.submodules.RGB_sensor_Out = gpio.GPIOIn(pads_RGB_sensor_Out)
+```
+
+#### Función que usa el periférico.
+Esta función imprime el valor en el rango que se esta leyendo mediante el sensor.
 ```
 static void RGB_sensor_test(void){
 	 
@@ -55,6 +76,30 @@ static void RGB_sensor_test(void){
 ```
 
 ### Motores 🔩
+Para el movimiento del carrito con los motores se hizo uso de un puente H, con el que dependiendo de la orden o secuencia enviada se comporta de una u otr manera para avanzar retroceder, girar o quedarse quieto.
+
+
+```
+##ENABLES MOTORES
+		
+		#MotorEN1
+		SoCCore.add_csr(self,"motorEN1")
+		pads_motorEN1 = Cat(*[platform.request("motorEN1", i) for i in range(1)])
+		self.submodules.motorEN1 = gpio.GPIOOut(pads_motorEN1)
+		#MotorEN2
+		SoCCore.add_csr(self,"motorEN2")
+		pads_motorEN2 = Cat(*[platform.request("motorEN2", i) for i in range(1)])
+		self.submodules.motorEN2 = gpio.GPIOOut(pads_motorEN2)
+		#MotorEN2
+		SoCCore.add_csr(self,"motorEN3")
+		pads_motorEN3 = Cat(*[platform.request("motorEN3", i) for i in range(1)])
+		self.submodules.motorEN3 = gpio.GPIOOut(pads_motorEN3)
+		#MotorEN2
+		SoCCore.add_csr(self,"motorEN4")
+		pads_motorEN4 = Cat(*[platform.request("motorEN4", i) for i in range(1)])
+		self.submodules.motorEN4 = gpio.GPIOOut(pads_motorEN4)
+```
+
 ## Ruedas Carrito
 ```
 static void motor_test(bool EN1,bool EN2,bool EN3 ,bool EN4){
@@ -71,7 +116,19 @@ static void motor_test(bool EN1,bool EN2,bool EN3 ,bool EN4){
 }
 
 ```
+
+Para el dispensador se uso un motor paso a paso, para el cual se le asignaron en un rango de valores los 4 ángulos deseados para el movimiento rotatorio del contenedor de los medicamentos:
+
 ## Dispensador
+Se declara el uso del módulo de paso a paso, usando GPIO
+
+```
+#stepper
+		SoCCore.add_csr(self,"stepper")
+		pads_stepper = Cat(*[platform.request("stepper", i) for i in range(4)])
+		self.submodules.stepper = gpio.GPIOOut(pads_stepper)
+```
+Esta función dependiendo del medicamento que se le asigna mediante la página web de la ESP, mueve el dispensador al ángulo del medicamento deseado, esto una vez haya llegado a la estación base que es leída por el sensor RGB.
 ```
 void motor_disp(int degrees){
 
@@ -136,6 +193,16 @@ static void infrarrojo_test(void){
 La tarjeta ESP8266 fue utilizada de tal forma que se pudiera mandar la información de las acciones a realizar por el carrito. La tarjeta de desarrollo cuenta con un módulo wifi y la capacidad de acceder y personalizar una pagina web basada en un servidor local. A través de HTML se crean los botones, se decidió que iban a ser 3 estaciones y 3 posibles medicamentos, es decir, se configuraron 6 botones. La comunicación de la ESP con la FPGA se hizo por medio de GPIO, por lo que cada boton envia una señal que puede tener un valor de 0 ó 1 (3.3V) a través de pines digitales 6, 7, 8, , 9, 10 y 11 de la tarjeta. Con las diferentes combinaciones posibles se programa un comportamiento definido para el carrito en la fpga.
 
 ![Pinout NodeMcu](https://user-images.githubusercontent.com/80412854/204703009-41ad69aa-537f-44de-8b36-17f91a4782cc.jpg)
+
+Primero se declara el modulo de la ESP para obtener la información de los pines de la tarjeta
+```
+#ESP8266
+		SoCCore.add_csr(self,"ESP8266")
+		pads_ESP8266 = Cat(*[platform.request("ESP8266", i) for i in range(6)])
+		self.submodules.ESP8266 = gpio.GPIOIn(pads_ESP8266)
+```
+
+La tarjeta ESP se programa de la siguiente manera, haciendo uso de la librería WiFi para crear un servidor local y este se escribe em HTML:
 
 ```
 // IP: 192.168.43.207/
