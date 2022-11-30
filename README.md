@@ -504,3 +504,4 @@ El mapa de memoria que es mostrado en el archivo Soc_MemoryMap es el resultado d
 Como se ha visto en los perifericos del documento, algunos fueron alimentados por medio de la FPGA, sin embargo, se debio usar una powerbank para alimentar tanto la FPGA como los perifericos que no pudieron ser alimentados mediante la tarjeta. LA FPGA debe ser programada con la powerbank en uso, ya que si esta se llega a apagar, la programación del procesador se pierde. Por otro lado, la ESP también debió ser alimentada, pero esta tarjeta queda programada y no tiene inconveniente al apagarse. 
 
 
+
