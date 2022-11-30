@@ -133,7 +133,7 @@ static void infrarrojo_test(void){
 
 ### Tarjeta ESP8266 💻
 
-La tarjeta ESP8266 fue utilizada de tal forma que se pudiera mandar la información de las acciones a realizar por el carrito. La tarjeta de desarrollo cuenta con un módulo wifi y la capacidad de acceder y personalizar una pagina web basada en un servidor local. A través de HTML se crean los botones, se decidió que iban a ser 3 estaciones y 3 posibles medicamentos, es decir, se configuraron 6 botones. La comunicación de la ESP con la FPGA se hizo por medio de GPIO, por lo que cada boton envia una señal que puede tener un valor de 0 ó 1 (3.3V) a través de pines digitales de la tarjeta. Con las diferentes combinaciones posibles se programa un comportamiento definido para el carrito.
+La tarjeta ESP8266 fue utilizada de tal forma que se pudiera mandar la información de las acciones a realizar por el carrito. La tarjeta de desarrollo cuenta con un módulo wifi y la capacidad de acceder y personalizar una pagina web basada en un servidor local. A través de HTML se crean los botones, se decidió que iban a ser 3 estaciones y 3 posibles medicamentos, es decir, se configuraron 6 botones. La comunicación de la ESP con la FPGA se hizo por medio de GPIO, por lo que cada boton envia una señal que puede tener un valor de 0 ó 1 (3.3V) a través de pines digitales 6, 7, 8, , 9, 10 y 11 de la tarjeta. Con las diferentes combinaciones posibles se programa un comportamiento definido para el carrito en la fpga.
 
 ![Pinout NodeMcu](https://user-images.githubusercontent.com/80412854/204703009-41ad69aa-537f-44de-8b36-17f91a4782cc.jpg)
 
