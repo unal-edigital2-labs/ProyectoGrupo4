@@ -17,8 +17,11 @@ La configuración del SoC y los perifericos del dispositivo son mostrados a cont
 
 ## Periféricos
 ### Sensor RGB 🌈
-El sensor RGB
+
 Este sensor es capaz de medir la frecuencia en la que se encuentra cierta onda de luz, por esto, se debieron ajustar manualmente los rangos de frecuencias en donde se iban a encontrar los colores rojo, verde y azul. Para este periferico se uso un módulo GPIO que iba a recoger la información de 4 pines provenientes del sensor, a su vez, el sensor es alimentado.
+
+![Mdulo-de-reconocimiento-de-Color-para-Arduino-sensor-de-Color-TCS230-TCS3200-digitalshop-sincelejo](https://user-images.githubusercontent.com/80412854/204786905-6db15984-401a-4846-b22b-e476d91968da.jpg)
+
 
 #### Declaración Módulo Periférico
 Aquí se declaran los pines GPIO S0 S1 S2 y S3 provenientes del sensor.
@@ -76,7 +79,10 @@ static void RGB_sensor_test(void){
 ```
 
 ### Motores 🔩
-Para el movimiento del carrito con los motores se hizo uso de un puente H, con el que dependiendo de la orden o secuencia enviada se comporta de una u otr manera para avanzar retroceder, girar o quedarse quieto.
+Para el movimiento del carrito con los motores se hizo uso de un puente H, con el que dependiendo de la orden o secuencia enviada se comporta de una u otr manera para avanzar retroceder, girar o quedarse quieto. Los motores debieron ser alimentados externamente, por lo que en el momento del funcionamiento se hace uso de una batería externa de apoyo. 
+
+
+![IMG_0184](https://user-images.githubusercontent.com/80412854/204784433-af46bdb3-aa0b-441f-88d4-c6887096defa.jpeg)
 
 
 ```
@@ -104,15 +110,14 @@ Para el movimiento del carrito con los motores se hizo uso de un puente H, con e
 ```
 static void motor_test(bool EN1,bool EN2,bool EN3 ,bool EN4){
 	
-	//while(!(buttons_in_read())&1){
+	while(!(buttons_in_read())&1){
 		motorEN1_out_write(EN1);
 		motorEN2_out_write(EN2);
 		motorEN3_out_write(EN3);
 		motorEN4_out_write(EN4);
 		
-		//printf("hola");
 		//delay_ms(500);
-	//}
+	}
 }
 
 ```
@@ -164,6 +169,22 @@ void motor_disp(int degrees){
 ```
 
 ### Infrarrojo ⭕️
+
+En el caso de los infrarrojos, en el proyecto se usan dos HW511 los cuales cuentan solo con un un pin de comunicación cada uno, además de los pines de alimentación y puesta a tierra. Se dispone un sensor a cada lado, izquierda y derecha, no tan separados para que puedan seguir la línea de manera óptima, a partir de la lectura de estos se establece un comportamiento. Si ambos están en 0 el carrito debe detenerse, si uno de los dos esta en 0 y el otro en 1, el carrito debería girar para acomodarse a la línea, es decir, un motor deberá detenerse de acuerdo a esto para lograrlo, si ambos estan en 1 el carrito deberá avanzar. Este movimiento se detiene solo hasta que el sensor rgb detecte la frecuencia del color de la estación establecida, en cuyo caso se escriben los motores para pausar el movimiento
+
+![image_1024](https://user-images.githubusercontent.com/80412854/204786577-f7a9bc58-53e1-4f8b-ac92-9141348d7c7e.jpeg)
+
+
+```
+#Sensor Infrarrojo Izquierdo 
+		SoCCore.add_csr(self,"LIR")
+		pads_LIR = Cat(*[platform.request("LIR",i) for i in range(1)])
+		self.submodules.LIR = gpio.GPIOIn(pads_LIR)
+		#Sensor Infrarrojo Izquierdo 
+		SoCCore.add_csr(self,"RIR")
+		pads_RIR = Cat(*[platform.request("RIR",i) for i in range(1)])
+		self.submodules.RIR = gpio.GPIOIn(pads_RIR)
+```
 
 ```
 static void infrarrojo_test(void){
